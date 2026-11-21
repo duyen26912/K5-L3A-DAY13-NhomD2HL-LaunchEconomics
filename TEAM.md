@@ -56,11 +56,19 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- A1: viết ba hàm kinh tế của việc chạy lại; ba phép thử đáp án biết trước ĐẠT (1,20 · 1,25 · 1,25), có tính tay đối chiếu.
+- A2: viết `mo_hinh`; chi phí mỗi việc thành công **4.472 đ** [simulated], gấp **16,3×** hoá đơn token + tool chia số yêu cầu (274,7 đ); làm lại chiếm 51,8%, xem lại 40,7% [simulated].
+- A3: tách theo `loai`: `noi_dia` 0,22× · `hang_nang` 0,69× · `doi_tac` 0,85× · `quoc_te` 1,88× so với 12.000 đ [simulated]; chỉ ra chạy lại không giúp `quoc_te` (lần 2 đúng 11,4%, lần 3 còn 2,2%).
+- A4: cộng chi phí cố định 40 triệu đ/tháng cho `noi_dia` + `hang_nang`: **4.599 đ = 0,38×**, nửa khối lượng **5.784 đ = 0,48×** [simulated].
+- Điền mục 1 và mục 3 của `ho_so_launch_v0.md`.
+- Gắn nhãn 2 độc lập 20 ca ở nhiệm vụ C (đồng thuận 19/20 = 95%).
+- Soát và sửa phạm vi pilot: 6 depot chạy thử chỉ có 20 nhân viên (chia 10 + 10 dưới 20 cụm) nên đổi thành 12 depot, 40 nhân viên, chia 20 + 20.
 
 ### Bằng chứng
 
--
+- Commit `6851c84` (A1), `2574056` và `7b6ecdf` (A2, A3), `3d86f1d` (A4), `7fb4dc4` (mục 1, 3 hồ sơ), `672670e` (hai bộ nhãn C), `3357dfd` (sửa phạm vi pilot).
+- File: `src/lab13.py` (khối A1–A4), `report/team/bang_chi_phi.md` (bảng A1–A4), `report/team/ho_so_launch_v0.md` (mục 1, 3), `report/team/bang_loi.md` (cột nhãn người 2).
+- Báo cáo cá nhân: `report/team/2A202603679_VoThiKimHuyen.md`.
 
 ## NguyenThiDuyen-2A202603698
 
@@ -98,8 +106,15 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- E1: viết khối tính thử ba chỉ số trong `src/lab13.py` trên 1.200 yêu cầu: chính **82,83%** (994/1.200), bỏ qua gợi ý **27,12%** (48/177), mở lại 7 ngày **4,25%** (51/1.200; 3,97% trong phạm vi). Ghi rõ đợt chạy thử không có đối chứng nên chưa kết luận được tác động.
+- `chi_so.md`: đặc tả 3 chỉ số + 2 chỉ số tự đề xuất; 10 event đều có `trace_id`; kiểm tra chéo mọi chỉ số tính được từ event.
+- E2: 4 dòng rủi ro kinh tế, mỗi dòng có tác động đã tính, dấu hiệu theo dõi, hành động và một vai trò (làm lại ×2: 6.787 đ; xem lại 100%: 0,98×–1,03×; xem lại ×2: 6.292 đ; khối lượng một nửa: +2.370 đ/việc) [simulated].
+- E3: mục 4 và 7 hồ sơ; đề xuất **Go có điều kiện** với 4 điều kiện, mỗi điều kiện có vai trò và ngày kiểm tra.
+- Viết `group_report.md` và điền kết quả duyệt chéo từ hội đồng (25/30, Go có điều kiện, câu hỏi và câu trả lời của nhóm).
+- Báo cáo cá nhân: `report/team/2A202603677_VuGiaLinh.md`.
 
 ### Bằng chứng
 
--
+- Commit `dc79c6f` (CP5-E: `src/lab13.py` khối E1, `chi_so.md`, mục 4, 7 và đề xuất trong `ho_so_launch_v0.md`, bản nháp `group_report.md`).
+- File: `report/team/chi_so.md`, `report/team/ho_so_launch_v0.md` (mục 4, 7, đề xuất), `report/team/phieu_cham.md`, `report/team/group_report.md`.
+- Báo cáo cá nhân: `report/team/2A202603677_VuGiaLinh.md`.

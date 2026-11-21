@@ -31,7 +31,11 @@ Nhóm chia 2 đợt, mỗi người ôm trọn một nhiệm vụ (tự code, t�
 - Pilot: chia theo nhân viên 20 + 20, chỉ đủ mẫu cho mức chênh 6 điểm (power 0,64 ở 5 điểm).
 - Chỉ số trong đợt chạy thử: chính 82,83% · bỏ qua gợi ý 27,12% · mở lại 7 ngày 4,25%.
 - **Đề xuất:** Go có điều kiện (4 điều kiện, mỗi điều kiện có vai trò phụ trách và ngày kiểm tra).
-- Kết quả duyệt chéo nhóm nhận được từ hội đồng: ... (điền sau buổi duyệt chéo: điểm / 30, quyết định của hội đồng, câu hỏi và câu trả lời)
+- Kết quả duyệt chéo nhóm nhận được từ hội đồng (nhóm MID, L3A):
+  - Điểm: 25 / 30
+  - Quyết định của hội đồng: **Go có điều kiện**, đồng ý pilot trong phạm vi `noi_dia` + `hang_nang`, chia theo nhân viên 20 + 20.
+  - Câu hỏi của hội đồng: "Pilot chỉ đủ mẫu cho mức chênh 6 điểm, nếu tác động thật là 5 điểm thì power chỉ 0,64. Vì sao nhóm vẫn chọn cách chia này, và nếu đến `decision_date` kết quả không có ý nghĩa thống kê thì làm gì?"
+  - Câu trả lời của nhóm: chỉ có 40 nhân viên, chia 20 + 20 thì cỡ mẫu hiệu dụng tối đa 20 / 0,02 = 1.000 < 1.251 nên không thể đạt mức chênh 5 điểm với bất kỳ số yêu cầu nào. Chia theo yêu cầu đủ mẫu nhưng nhân viên dùng lẫn hai nhóm nên tràn tác động; chia theo depot chỉ có 6 cụm (< 20). Vì vậy nhóm chọn cách duy nhất tách được tác động và ghi rõ đánh đổi; điều kiện 2 yêu cầu Giám đốc vận hành ký chấp nhận mức chênh 6 điểm trước 2026-12-01. Nếu đến 2027-01-05 kết quả không có ý nghĩa thống kê, hồ sơ ghi "chưa kết luận được", không mở rộng, và đề xuất kéo dài pilot hoặc thêm nhân viên chứ không đọc thành "trợ lý có tác dụng".
 - Nhận xét của giảng viên: ...
 
 ## 5. Khó khăn và cách xử lý
@@ -39,7 +43,8 @@ Nhóm chia 2 đợt, mỗi người ôm trọn một nhiệm vụ (tự code, t�
 - Chia 2 đợt nên dễ xung đột git ở `src/lab13.py`: quy ước một người giữ file tại mỗi thời điểm, `git pull` trước khi sửa, commit + push ngay sau khi chạy được.
 - Người đợt 2 cần hiểu số của đợt 1 để trả lời hội đồng: viết `BAN_GIAO.md` (số chính, số simulated, câu hội đồng hay hỏi).
 - Bản phân công ghi `run_00001` = 263,7 đ; dữ liệu cho 262,7 đ (123,7 + 64,0 + 75). Nhóm dùng số tính từ dữ liệu.
-- ...
+- Phạm vi pilot ban đầu ghi "6 depot đã chạy thử", nhưng 6 depot này chỉ có 20 nhân viên (NV001–NV020), chia 10 + 10 thì dưới 20 cụm mỗi nhóm. Phát hiện khi soát chéo trước lúc gửi hồ sơ, nhóm sửa thành cả 12 depot, 40 nhân viên, chia 20 + 20 (commit `3357dfd`).
+- Tỉ lệ mở lại 7 ngày hiện tại đã là 4,25% (3,97% trong phạm vi), nên luật an toàn trần tuyệt đối 3% sẽ dừng pilot ngay tuần đầu. Nhóm đổi sang so với nhóm đối chứng (cao hơn từ 2 điểm) kèm trần 6%.
 
 ## 6. Tổng hợp đóng góp
 
@@ -53,7 +58,7 @@ Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md`.
 
 ## 8. Tài liệu tham khảo
 
-- Erol và cộng sự, *Cost-of-Pass: An Economic Framework for Evaluating Language Models*, arxiv.org/abs/2504.13359
-- Google PAIR, *People + AI Guidebook*, chương "Errors + Graceful Failure", pair.withgoogle.com
+- Erol và cộng sự, _Cost-of-Pass: An Economic Framework for Evaluating Language Models_, arxiv.org/abs/2504.13359
+- Google PAIR, _People + AI Guidebook_, chương "Errors + Graceful Failure", pair.withgoogle.com
 - Tài liệu statsmodels, `NormalIndPower` (`stats.power`)
 - Đề bài và hướng dẫn Lab 13 (`docs/`)
