@@ -6,9 +6,9 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 
 | Phép thử (p = 0,8) | Kết quả của nhóm |
 | --- | --- |
-| Số lần chạy trung bình, tối đa 2 lần | ... |
-| Số lần chạy trung bình, chạy đến khi đúng | ... |
-| Hệ số chi phí mỗi việc thành công, tối đa 3 lần | ... |
+| Số lần chạy trung bình, tối đa 2 lần | 1,20 (tính tay: (1 − 0,2²) / 0,8 = 0,96 / 0,8) |
+| Số lần chạy trung bình, chạy đến khi đúng | 1,25 (tính tay: 1 / 0,8) |
+| Hệ số chi phí mỗi việc thành công, tối đa 3 lần | 1,25 (tính tay: [(1 − 0,2³) / 0,8] / (1 − 0,2³) = 1,24 / 0,992 = 1/p) |
 
 ## A2 · Mô hình chi phí từ trace
 
