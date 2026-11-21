@@ -11,7 +11,7 @@
 #
 # D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (theo nhân viên, 20 + 20):
 #   1. Đối chứng chạy cùng thời gian: có, 20 nhân viên đối chứng làm cùng tuần, cùng depot với nhóm dùng trợ lý
-#   2. Chia ngẫu nhiên hay do người chọn: ngẫu nhiên, bốc thăm bằng code với seed ghi trước, phân tầng theo depot
+#   2. Chia ngẫu nhiên hay do người chọn: ngẫu nhiên, bốc thăm bằng code với seed ghi trước, phân tầng theo 12 depot (mỗi depot chia đôi nhân viên)
 #   3. Ảnh hưởng gián tiếp và cách giảm: có rủi ro chia sẻ câu trả lời trong depot; giảm bằng quyền truy cập theo tài khoản và log lượt mở trợ lý theo staff_id
 #   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước: có, chốt trong file này trước ngày bắt đầu
 #   5. Ít nhất 20 cụm mỗi nhóm: có, đúng 20 cụm (nhân viên) mỗi nhóm
@@ -25,7 +25,7 @@
 
 pilot:
   owner: "Giám đốc vận hành LogiX-VN"
-  scope: "Chỉ noi_dia và hang_nang ở 6 depot đã chạy thử (0,22x và 0,69x so với 12.000 đ, simulated); loại quoc_te (1,88x, thành công 27,3%) và doi_tac (0,85x, điều khoản riêng)"
+  scope: "Chỉ noi_dia và hang_nang ở cả 12 depot, 40 nhân viên CSKH (0,22x và 0,69x so với 12.000 đ, simulated); 6 depot đã chạy thử chỉ có 20 nhân viên (NV001-NV020), chia 10 + 10 dưới 20 cụm nên không dùng; loại quoc_te (1,88x, thành công 27,3%) và doi_tac (0,85x, điều khoản riêng)"
   assignment:
     unit: "staff"
     control_share: 0.5
