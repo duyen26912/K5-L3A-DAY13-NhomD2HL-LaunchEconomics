@@ -11,7 +11,7 @@ Nhóm: D2HL · Lớp: L3A
 | 3 · So với nhân viên tự làm | Cả hệ thống (1.200 yc, đã cộng 222 ca nhân viên làm thay): **5.865 đ/yc = 0,49×** của 12.000 đ [simulated]. Theo loại: `noi_dia` 0,22×, `hang_nang` 0,69×, `doi_tac` 0,85×, `quoc_te` **1,88×** (loại `quoc_te`, `doi_tac` khỏi pilot). Phạm vi pilot + cố định: **0,38×** (45.000 yc/tháng) – **0,48×** (nửa khối lượng) [simulated] | Giả lập | PM trợ lý hoàn phí |
 | 4 · Chỉ số chính, chỉ số dùng, chỉ số an toàn | ... | ... | ... |
 | 5 · Bảng lỗi và cách khắc phục | Đồng thuận 19/20 = 95% (≥ 80%); 20 ca: 4 do người dùng · 5 hệ thống · 4 ngữ cảnh · 4 giới hạn · 3 ngầm (nhãn thống nhất); 5 cách khắc phục đủ 5 loại (ca 9, 7, 18, 4, 17), mỗi cách có event + ngưỡng + tần suất và một vai trò | Xong, có bằng chứng (`bang_loi.md`) | Người gắn nhãn 1 (Duyên) |
-| 6 · Pilot plan | ... | ... | ... |
+| 6 · Pilot plan | Chia theo nhân viên 20 + 20 (ngẫu nhiên, cùng tuần, ≥ 20 cụm mỗi nhóm), phạm vi `noi_dia` + `hang_nang`. Cỡ mẫu: 1.251 yc/nhóm nếu chia theo yêu cầu; theo nhân viên chỉ đủ mức chênh **6 điểm** (859/nhóm, mỗi người ≥ 299 yc, DE 6,96), nếu tác động thật là 5 điểm thì power chỉ **0,64**. Tỉ lệ mở lại hiện tại 4,25% (3,97% trong phạm vi) nên luật an toàn so với đối chứng (≥ 2 điểm) kèm trần 6%, không dùng trần 3%. 3 luật dừng (an toàn, chi phí > 8.000 đ [simulated], bỏ qua gợi ý > 40%); `decision_date` 2027-01-05 | Xong, có bằng chứng (`pilot_plan.yaml`; ngưỡng chi phí dựa trên số simulated) | Giám đốc vận hành |
 | 7 · Rủi ro kinh tế | ... | ... | ... |
 
 **Đề xuất:** Go · Go có điều kiện · No-go (giữ một). Go có điều kiện: ghi từng điều kiện, người phụ trách, ngày kiểm tra. No-go: ghi việc phải làm để quay lại cổng.

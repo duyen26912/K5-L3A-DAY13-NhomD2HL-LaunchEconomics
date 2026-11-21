@@ -207,6 +207,43 @@ if __name__ == '__main__':
         hoa_von = (BASELINE * tc_pv - tien_lam_lai - token_tool_pv) / (so_yc_ok * LUONG_PHUT)
         print(f'{ten:26s} tổng {tong_b4:12,.0f} đ → cps {tong_b4 / tc_pv:7,.0f} đ = {tong_b4 / tc_pv / BASELINE:.2f}×; '
               f'hoà vốn khi xem lại ≤ {hoa_von:.1f} phút')
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    # ---------- Nhiệm vụ D · Cỡ mẫu và kế hoạch pilot (CP4) ----------
+    from statistics import NormalDist
+    ICC, BASE = 0.02, 0.70
+
+    def co_mau(p1, p2, alpha=0.05, power=0.8):
+        za, zb = NormalDist().inv_cdf(1 - alpha / 2), NormalDist().inv_cdf(power)
+        pb = (p1 + p2) / 2
+        return math.ceil((za * math.sqrt(2 * pb * (1 - pb))
+                          + zb * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2 / (p2 - p1) ** 2)
+
+    def he_so_thiet_ke(m):
+        return 1 + (m - 1) * ICC
+
+    n5, n6 = co_mau(BASE, 0.75), co_mau(BASE, 0.76)
+    print('=== D1 · Cỡ mẫu (baseline 0,70; alpha 0,05; power 0,8; ICC 0,02) ===')
+    print(f'a) Chia theo yêu cầu: {n5} yêu cầu mỗi nhóm')
+    de75 = he_so_thiet_ke(75)
+    n_b = math.ceil(n5 * de75)
+    nv_b = math.ceil(n_b / 75)
+    print(f'b) Theo nhân viên, m = 75: DE = {de75:.2f}, {n_b} yêu cầu mỗi nhóm, {nv_b} nhân viên mỗi nhóm, '
+          f'tổng {2 * nv_b} > 40 → không đủ người')
+    print(f'c) 20 nhân viên mỗi nhóm: cỡ mẫu hiệu dụng tối đa 20 / ICC = {20 / ICC:,.0f} < {n5} → không đạt 5 điểm')
+    print(f'd) 6 depot mỗi nhóm: tối đa 6 / ICC = {6 / ICC:,.0f}')
+    m_e = next(m for m in range(1, 10_000) if 20 * m / he_so_thiet_ke(m) >= n6)
+    print(f'e) Mức chênh 6 điểm ({n6} mỗi nhóm), 20 nhân viên mỗi nhóm: m ≥ {m_e} yêu cầu mỗi người '
+          f'(DE {he_so_thiet_ke(m_e):.2f}; hiệu dụng {20 * m_e / he_so_thiet_ke(m_e):,.0f})')
+    try:
+        from statsmodels.stats.power import NormalIndPower
+        from statsmodels.stats.proportion import proportion_effectsize
+        pw = NormalIndPower().power(proportion_effectsize(0.75, BASE), nobs1=n6, alpha=0.05)
+        print(f'   Power nếu tác động thật chỉ 5 điểm với {n6}/nhóm: {pw:.2f}')
+    except ImportError:
+        print('   (cài statsmodels để tính power)')
+
+    # D3 · Tỉ lệ mở lại hiện tại, trước khi đặt luật an toàn
+    print('=== D3 · mo_lai_trong_7_ngay hiện tại (đợt chạy thử) ===')
+    print(f"Toàn mẫu: {reqs['mo_lai_trong_7_ngay'].mean():.2%} ({int(reqs['mo_lai_trong_7_ngay'].sum())}/{len(reqs)}); "
+          f"noi_dia + hang_nang: {reqs_pham_vi['mo_lai_trong_7_ngay'].mean():.2%}")
+    print(f"Tỉ lệ làm lại trong phạm vi: {(reqs_pham_vi['ket_qua'] == 'lam_lai').mean():.1%}")
+    print(f'Nếu đặt trần tuyệt đối 3% thì đã vượt ({reqs["mo_lai_trong_7_ngay"].mean():.2%}) → pilot dừng ngay tuần đầu')
