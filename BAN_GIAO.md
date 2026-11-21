@@ -1,6 +1,6 @@
 # Bàn giao đợt 1 → đợt 2 (Huyền + Duyên → Huân + Linh)
 
-- Commit cuối của đợt 1: ... (điền sau commit "CP2-CP3")
+- Commit cuối của đợt 1: `f0a4517` ("CP2-CP3: bang khac phuc 5 ca, muc 2 + 5 ho so, BAN_GIAO phan B, C")
 - `cd src; python lab13.py` chạy **ĐẠT** ba phép thử A1 và in đủ A2, A3, A4, B1–B4.
 - Từ đây **Huân giữ `src/lab13.py`** (D), sau đó tới Linh (E). Trước khi sửa: `git pull`.
 - Mọi số có chữ [simulated] phải giữ nhãn đó khi dùng lại trong `chi_so.md`, `pilot_plan.yaml`, hồ sơ.
@@ -51,4 +51,5 @@ Nguồn: `report/team/bang_loi.md`.
 ## Việc còn dở / chỗ chưa chắc
 
 - Mục 1, 3 hồ sơ: Huyền điền.
-- ...
+- B4 phụ thuộc số phút làm lại: đề cho 9 phút/ca (0,98×), dữ liệu trung bình 15,3 phút/ca (1,03×) [simulated]. Hồ sơ nên ghi cả hai, chưa chắc đáp án dùng mức nào.
+- Ca 9 (bảng khắc phục) dùng event `input_validation_failed`, chưa nằm trong 10 event của `chi_so.md`; Linh cân nhắc thêm hoặc giữ là event phụ.

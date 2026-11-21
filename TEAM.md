@@ -78,11 +78,19 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- `TEAM.md`: điền thông tin nhóm, thành viên, cách chia việc 2 đợt và bảng người giữ bút từng file.
+- B1: viết khối "Nhiệm vụ B" trong `src/lab13.py`, gọi lại `mo_hinh` cho 9 kịch bản; tự kiểm "giảm một nửa = nửa mức tăng gấp đôi" bằng `assert` (5,6 → 2,8; 40,7 → 20,3; 51,8 → 25,9) [simulated].
+- B2: token ×2 + xem lại ×2 = **6.543 đ (+46,3%)** = tổng hai tác động riêng; xếp hạng 3 yếu tố nhạy nhất: làm lại (+51,8%) · xem lại (+40,7%) · lương (+23,1%) [simulated].
+- B3: giới hạn **2 lần** rẻ nhất cho cả hệ thống (6.901.220 đ), khác giới hạn 1 lần cho chi phí mỗi việc thành công thấp nhất (4.111 đ, nhưng thêm 85 yêu cầu sang nhân viên) [simulated].
+- B4: xem lại 100% phạm vi `noi_dia` + `hang_nang` = **11.743 đ = 0,98×** (9 phút làm lại) đến **12.415 đ = 1,03×** (15,3 phút); hoà vốn ≤ 5,1 phút mỗi lần xem lại [simulated].
+- Nhiệm vụ C: người gắn nhãn 1, gắn độc lập 20 ca; đồng thuận 19/20 = 95%; viết quy tắc cho ca 16 (Ngữ cảnh) và bảng khắc phục 5 ca đủ 5 loại, mỗi dòng có event, ngưỡng, tần suất và một vai trò.
+- Điền mục 2 và mục 5 của `ho_so_launch_v0.md`; viết `BAN_GIAO.md` phần B, C (số chính, việc dùng cho đợt 2, câu hội đồng hay hỏi).
 
 ### Bằng chứng
 
--
+- Commit `8ab5cee` (`TEAM.md`), `5ef541d` (B1–B4: `src/lab13.py`, `bang_chi_phi.md`), `f0a4517` (bảng khắc phục 5 ca, mục 2 + 5 hồ sơ, `BAN_GIAO.md` phần B, C).
+- File: `src/lab13.py` (khối Nhiệm vụ B), `report/team/bang_chi_phi.md` (B1–B4), `report/team/bang_loi.md` (cột nhãn người 1, quy tắc ca 16, bảng khắc phục), `report/team/ho_so_launch_v0.md` (mục 2, 5), `BAN_GIAO.md` (phần B, C).
+- Báo cáo cá nhân: `report/team/2A202603698_NguyenThiDuyen.md`.
 
 ## NguyenDucHuan-2A202603690
 
