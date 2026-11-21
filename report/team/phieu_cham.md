@@ -2,20 +2,20 @@
 
 Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo bằng chứng trong hồ sơ, không theo cách trình bày: một đề xuất No-go có lý do bằng số được điểm cao hơn một đề xuất Go bỏ qua con số bất lợi.
 
-- Nhóm chấm (hội đồng): ...
-- Nhóm được chấm: ...
+- Nhóm chấm (hội đồng): D2HL (L3A)
+- Nhóm được chấm: MID (L3A)
 
-| Tiêu chí | 0 điểm | 5 điểm | 10 điểm | Điểm | Lý do (có số) |
-| --- | --- | --- | --- | ---: | --- |
-| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | ... | ... |
-| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | ... | ... |
-| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | ... | ... |
-| **Tổng** | | | | **... / 30** | |
+| Tiêu chí                 | 0 điểm                            | 5 điểm                               | 10 điểm                                                                        |        Điểm | Lý do (có số)                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------ | --------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------ | ----------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Đề xuất khớp bằng chứng  | Mâu thuẫn với số của chính nhóm   | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý                                      |          10 | Go có điều kiện khớp số 0,49× (4.599 đ trong phạm vi) [simulated]; nêu đủ bất lợi: xem lại 100% = 0,98×–1,03×, power 0,64, lỗi mất tiền ca 7, 20; mỗi bất lợi có điều kiện xử lý (điều kiện 1, 2, 4). Thiếu sót: điều kiện không có ngày kiểm tra cụ thể (chỉ ghi "trước ngày bắt đầu", không có ngày bắt đầu)                                                                                                                                      |
+| Số giả lập và phạm vi    | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi      | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số                        |           5 | Có nhãn simulated ở mục 1, 2, 3, 7 và thu hẹp về `noi_dia` + `hang_nang`. Nhưng loại `doi_tac` dù 0,85× (rẻ hơn nhân viên tự làm 15%) mà không có lý do bằng số; ngưỡng 8.000 đ trong luật dừng chi phí dựa trên phút simulated nhưng không ghi nhãn và không có trong `simulated_inputs`                                                                                                                                                           |
+| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung     | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng |          10 | Chia 20 + 20 nhân viên trên 12 depot, ngẫu nhiên có seed, đối chứng cùng tuần, đúng 20 cụm mỗi nhóm; mức chênh 6 điểm (859/nhóm, DE 6,96) có ghi đánh đổi power 0,64; ngưỡng an toàn so với đối chứng (+2 điểm, trần 6%) không làm dừng oan với mức 3,97% hiện tại; 3 luật dừng đủ ngưỡng, thời hạn, vai trò. Thiếu sót: `interim_looks` không ghi tần suất; không có ngày bắt đầu nên chưa kiểm được mỗi nhân viên đủ 299 yêu cầu trước 2027-01-15 |
+| **Tổng**                 |                                   |                                      |                                                                                | **25 / 30** |                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-**Quyết định của hội đồng:** Go · Go có điều kiện · No-go (giữ một)
+**Quyết định của hội đồng:** Go có điều kiện
 
-**Lý do:** ...
+**Lý do:** Đồng ý Go có điều kiện cho pilot `noi_dia` + `hang_nang`: chi phí trong phạm vi 4.599 đ = 0,38× nhân viên tự làm [simulated] và pilot tách được tác động (20 + 20 cụm). Hội đồng thêm ba điều kiện: (1) gắn nhãn lại 20 ca theo định nghĩa mới và đạt đồng thuận ≥ 80% (hiện 12/20 = 60%, chưa đo lại sau khi viết lại định nghĩa) trước khi chốt bảng khắc phục; (2) mỗi điều kiện ghi ngày kiểm tra cụ thể và ngày bắt đầu pilot; (3) người phụ trách mục 1–5 đổi từ vai trong nhóm lab ("Người viết code", "Người kiểm số", "Người gán nhãn") sang vai trò có quyền quyết định ở LogiX-VN, và mục 6 thống nhất với `owner` trong `pilot_plan.yaml` (Giám đốc vận hành, không phải "Team lead").
 
-**Một câu hỏi cho đội trình:** ...
+**Một câu hỏi cho đội trình:** `doi_tac` có chi phí 0,85× so với 12.000 đ, tức vẫn rẻ hơn nhân viên tự làm 15% [simulated]. Lý do bằng số nào để loại `doi_tac` khỏi pilot?
 
-**Câu trả lời của đội trình (ghi lại tại buổi):** ...
+**Câu trả lời của đội trình (ghi lại tại buổi):** `doi_tac` chỉ thành công 54,4%, tức 45,6% yêu cầu vẫn chuyển nhân viên làm thay; cộng chi phí cố định 1.185 đ/việc thì 10.215 + 1.185 = 11.400 đ = 0,95× [simulated], biên tiết kiệm chỉ còn khoảng 5% và sẽ mất hết khi xem lại 100% (B4 cho phạm vi chính đã lên 0,98×–1,03×). Ngoài ra `doi_tac` có điều khoản hoàn riêng theo từng hợp đồng và chỉ chiếm 68/1.200 = 5,7% yêu cầu, không đủ mẫu để đo riêng trong pilot. Đội trình nhận thiếu sót là chưa ghi các số này vào hồ sơ và sẽ bổ sung lý do bằng số cho dòng loại `doi_tac`.
