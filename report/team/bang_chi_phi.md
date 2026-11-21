@@ -14,18 +14,21 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 
 | Khoản | Số tiền (đ) | Nguồn | Nhãn |
 | --- | ---: | --- | --- |
-| Token | ... | `logix_runs.csv` | đo từ trace |
-| Tool | ... | `logix_runs.csv` | đo từ trace |
-| Trong đó, phần của lần chạy thứ 2 và 3 | ... | attempt lớn hơn 1 | đo từ trace |
-| Xem lại | ... | `phut_xem_lai_simulated` | simulated |
-| Làm lại | ... | `phut_lam_lai_simulated` | simulated |
-| Tổng chi phí | ... | | |
-| Số việc thành công | ... | `ket_qua` | |
-| Chi phí mỗi việc thành công | ... | | |
-| Hoá đơn token và tool chia cho số yêu cầu | ... | | |
+| Token | 245.585 | `logix_runs.csv` | đo từ trace |
+| Tool | 84.000 | `logix_runs.csv` | đo từ trace |
+| Trong đó, phần của lần chạy thứ 2 và 3 | 93.804 | attempt lớn hơn 1 | đo từ trace |
+| Xem lại | 1.780.000 | `phut_xem_lai_simulated` | simulated |
+| Làm lại | 2.264.000 | `phut_lam_lai_simulated` | simulated |
+| Tổng chi phí | 4.373.585 | | simulated (gồm xem lại, làm lại) |
+| Số việc thành công | 978 | `ket_qua` | |
+| Chi phí mỗi việc thành công | 4.472 | | simulated |
+| Hoá đơn token và tool chia cho số yêu cầu | 274,7 | | đo từ trace |
 
-- Chi phí mỗi việc thành công gấp bao nhiêu lần "hoá đơn chia số yêu cầu"? ...
-- Khoản nào chiếm tỉ trọng lớn nhất trong tổng chi phí, bao nhiêu phần trăm? ...
+Tự kiểm tay: `run_00001` = 4.759/1.000 × 26 + 492/1.000 × 130 + 5 × 15 = 123,7 + 64,0 + 75 = 262,7 đ; tool = 5.600 lần × 15 = 84.000 đ; xem lại = 890 phút × 2.000, làm lại = 1.132 phút × 2.000 [simulated].
+
+- Chi phí mỗi việc thành công gấp bao nhiêu lần "hoá đơn chia số yêu cầu"? 4.472 / 274,7 = **16,3 lần** [simulated]: tử số tính mọi lần chạy kể cả lần lỗi (93.804 đ là của lần chạy thứ 2, 3) cộng giờ nhân viên, mẫu số chỉ là 978 việc thành công thay vì 1.200 yêu cầu.
+- Khoản nào chiếm tỉ trọng lớn nhất trong tổng chi phí, bao nhiêu phần trăm? **Làm lại, 51,8%** [simulated], tiếp theo là xem lại 40,7% [simulated]; giờ nhân viên chiếm 92,5%, token + tool chỉ 7,5%.
+- Lưu ý khi so với 12.000 đ: 4.472 đ chưa tính 222 yêu cầu không thành công do nhân viên làm thay; chi phí cả hệ thống = (4.373.585 + 222 × 12.000) / 1.200 = **5.865 đ/yêu cầu = 0,49×** [simulated].
 
 ## A3 · Tách theo loại yêu cầu
 
