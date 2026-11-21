@@ -34,12 +34,14 @@ Tự kiểm tay: `run_00001` = 4.759/1.000 × 26 + 492/1.000 × 130 + 5 × 15 = 
 
 | Loại | Số yêu cầu | Tỉ lệ thành công | Số lần chạy mỗi yêu cầu | Chi phí mỗi việc thành công | So với 12.000 đ |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| noi_dia | ... | ... | ... | ... | ... |
-| hang_nang | ... | ... | ... | ... | ... |
-| quoc_te | ... | ... | ... | ... | ... |
-| doi_tac | ... | ... | ... | ... | ... |
+| noi_dia | 824 | 95,0% | 1,11 | 2.696 [simulated] | 0,22× |
+| hang_nang | 158 | 74,1% | 1,47 | 8.221 [simulated] | 0,69× |
+| quoc_te | 150 | 27,3% | 2,32 | 22.515 [simulated] | 1,88× |
+| doi_tac | 68 | 54,4% | 1,88 | 10.215 [simulated] | 0,85× |
 
-- Loại nào không đáng để trợ lý xử lý? Với loại đó, cho chạy lại tới 3 lần có giúp không? ...
+Tỉ lệ lần chạy `ok` theo lần thử (đo từ trace): noi_dia 91,0% → 75,7% → 38,9%; hang_nang 70,9% → 39,1% → 17,9%; doi_tac 51,5% → 18,2% → 14,8%; quoc_te 30,0% → 11,4% → 2,2%.
+
+- Loại nào không đáng để trợ lý xử lý? Với loại đó, cho chạy lại tới 3 lần có giúp không? **quoc_te** không đáng: chi phí mỗi việc thành công 22.515 đ = 1,88× nhân viên tự làm [simulated], chỉ 27,3% thành công. Chạy lại không giúp: lần 2 chỉ đúng 11,4%, lần 3 còn 2,2% (lỗi lặp lại trên cùng yêu cầu), trong khi quoc_te tiêu 2,32 lần chạy/yêu cầu. doi_tac sát ngưỡng (0,85×, thành công 54,4%) và có điều khoản riêng nên cũng loại khỏi phạm vi pilot.
 
 ## A4 · Chi phí cố định (phạm vi noi_dia + hang_nang)
 

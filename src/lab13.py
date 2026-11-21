@@ -58,7 +58,39 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
     - thanh_cong: số yêu cầu có ket_qua == 'thanh_cong'.
     - Các tham số giá/hệ số/max_lan_chay dùng cho Nhiệm vụ B (độ nhạy, giới hạn số lần chạy); giữ mặc định ở A2.
     """
-    raise NotImplementedError('VIẾT Ở ĐÂY')
+    reqs = reqs.copy()
+    # Chỉ giữ các lần chạy thuộc tập yêu cầu đang xét (để A3 lọc theo loai là đủ)
+    runs = runs[runs['request_id'].isin(reqs['request_id'])]
+
+    # Giới hạn số lần chạy (dùng cho B1, B3): bỏ lần chạy vượt giới hạn,
+    # yêu cầu cần nhiều lần hơn coi như chuyển nhân viên (không còn phút xem lại/làm lại)
+    if max_lan_chay is not None:
+        runs = runs[runs['attempt'] <= max_lan_chay]
+        vuot = reqs['so_lan_chay'] > max_lan_chay
+        reqs.loc[vuot, 'ket_qua'] = 'chuyen_nhan_vien'
+        reqs.loc[vuot, ['phut_xem_lai_simulated', 'phut_lam_lai_simulated']] = 0
+
+    # TỬ SỐ: cộng trên MỌI lần chạy, kể cả lần lỗi (lần lỗi vẫn bị tính tiền)
+    tien_token = runs['tokens_in'] / 1000 * gia_vao + runs['tokens_out'] / 1000 * gia_ra
+    tien_tool = runs['tool_calls'] * gia_tool
+    xem_lai = reqs['phut_xem_lai_simulated'].sum() * luong_phut * he_so_xem_lai   # simulated
+    lam_lai = reqs['phut_lam_lai_simulated'].sum() * luong_phut * he_so_lam_lai   # simulated
+    tong = tien_token.sum() + tien_tool.sum() + xem_lai + lam_lai
+
+    # MẪU SỐ: chỉ đếm yêu cầu thành công
+    thanh_cong = int((reqs['ket_qua'] == 'thanh_cong').sum())
+
+    return dict(
+        token=tien_token.sum(),
+        tool=tien_tool.sum(),
+        chay_lai=(tien_token + tien_tool)[runs['attempt'] > 1].sum(),  # phần của lần chạy thứ 2, 3
+        xem_lai=xem_lai,
+        lam_lai=lam_lai,
+        tong=tong,
+        thanh_cong=thanh_cong,
+        cps=tong / thanh_cong if thanh_cong else float('nan'),
+        hoa_don_moi_yc=(tien_token.sum() + tien_tool.sum()) / len(reqs),
+    )
 
 
 if __name__ == '__main__':
@@ -66,9 +98,31 @@ if __name__ == '__main__':
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
     kiem_tra_dap_an_biet_truoc()
     ket_qua = mo_hinh(runs, reqs)
+    print('\n=== A2 · Mô hình chi phí (xem_lai, lam_lai, tong, cps là simulated) ===')
     for ten, gia_tri in ket_qua.items():
-        print(f'{ten:12s} {gia_tri:>14,.0f}')
+        print(f'{ten:15s} {gia_tri:>14,.1f}')
+    print(f"cps / hoá đơn mỗi yêu cầu = {ket_qua['cps'] / ket_qua['hoa_don_moi_yc']:.1f}×")
+    for khoan in ['token', 'tool', 'xem_lai', 'lam_lai']:
+        print(f"Tỉ trọng {khoan:8s} {ket_qua[khoan] / ket_qua['tong']:6.1%}")
     # TODO CP1 · Nhiệm vụ A3: tính lại theo từng giá trị của cột loai.
+    print('\n=== A3 · Theo loại yêu cầu (cps là simulated) ===')
+    print(f"{'loai':10s} {'so_yc':>6s} {'ti_le_TC':>9s} {'chay/yc':>8s} {'cps':>9s} {'so_12k':>7s}")
+    for loai in ['noi_dia', 'hang_nang', 'quoc_te', 'doi_tac']:
+        reqs_loai = reqs[reqs['loai'] == loai]
+        kq = mo_hinh(runs, reqs_loai)
+        so_yc = len(reqs_loai)
+        so_lan_chay = runs['request_id'].isin(reqs_loai['request_id']).sum()
+        print(f"{loai:10s} {so_yc:6d} {kq['thanh_cong'] / so_yc:9.1%} {so_lan_chay / so_yc:8.2f} "
+              f"{kq['cps']:9,.0f} {kq['cps'] / BASELINE:6.2f}×")
+
+    # Tỉ lệ lần chạy 'ok' theo từng lần thử: chạy lại có giúp không?
+    runs_loai = runs.merge(reqs[['request_id', 'loai']], on='request_id')
+    runs_loai['ok'] = (runs_loai['status'] == 'ok').astype(float)
+    print('\nTỉ lệ ok theo lần thử (attempt):')
+    print(runs_loai.pivot_table(index='loai', columns='attempt', values='ok', aggfunc='mean')
+          .map(lambda x: f'{x:.1%}'))
+    print('Số lần chạy theo lần thử:')
+    print(runs_loai.pivot_table(index='loai', columns='attempt', values='ok', aggfunc='count'))
     # TODO CP2 · Nhiệm vụ B: đổi từng yếu tố, ghi vào bảng độ nhạy.
     # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
     #   from statsmodels.stats.proportion import proportion_effectsize
