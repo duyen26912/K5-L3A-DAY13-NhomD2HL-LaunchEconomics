@@ -92,11 +92,17 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 ### Đóng góp cụ thể
 
--
+- D1: viết khối cỡ mẫu trong `src/lab13.py` (hàm `co_mau`, hệ số thiết kế, cỡ mẫu hiệu dụng): chia theo yêu cầu **1.251**/nhóm; theo nhân viên (m = 75) hệ số 2,48, **3.103**/nhóm, 84 nhân viên > 40; 20 nhân viên/nhóm tối đa **1.000** < 1.251; 6 depot/nhóm tối đa **300**; chấp nhận mức chênh 6 điểm (859/nhóm) thì mỗi người ≥ **299** yêu cầu (hệ số 6,96); power còn **0,64** nếu tác động thật chỉ 5 điểm.
+- D2, D3: chọn chia theo nhân viên 20 + 20 (ngẫu nhiên, phân tầng theo depot, đối chứng cùng tuần), ghi đánh đổi đã chấp nhận; tính tỉ lệ mở lại hiện tại **4,25%** (3,97% trong phạm vi) nên luật an toàn so với đối chứng (chênh từ 2 điểm) kèm trần 6%, không dùng trần 3%.
+- `pilot_plan.yaml`: điền đủ trường, ba luật dừng đủ bốn vế (an toàn, chi phí > 8.000 đ [simulated], bỏ qua gợi ý > 40%), rollback 30 phút, `decision_date` 2027-01-05, `simulated_inputs`; đọc được bằng `yaml.safe_load`, không còn dấu `?` ngoài chú thích.
+- Điền mục 6 của `ho_so_launch_v0.md`.
+- Rà soát phạm vi pilot, chỉ ra mâu thuẫn "6 depot" với chia 20 + 20 (Huyền sửa ở `3357dfd`).
 
 ### Bằng chứng
 
--
+- Commit `1a77869` (D1, D3, `pilot_plan.yaml`, mục 6 hồ sơ).
+- File: `src/lab13.py` (khối Nhiệm vụ D), `report/team/pilot_plan.yaml`, `report/team/ho_so_launch_v0.md` (mục 6).
+- Báo cáo cá nhân: `report/team/2A202603690_NguyenDucHuan.md`.
 
 ## VuGiaLinh-2A202603677
 
