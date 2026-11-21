@@ -31,11 +31,8 @@ Nhóm chia 2 đợt, mỗi người ôm trọn một nhiệm vụ (tự code, t�
 - Pilot: chia theo nhân viên 20 + 20, chỉ đủ mẫu cho mức chênh 6 điểm (power 0,64 ở 5 điểm).
 - Chỉ số trong đợt chạy thử: chính 82,83% · bỏ qua gợi ý 27,12% · mở lại 7 ngày 4,25%.
 - **Đề xuất:** Go có điều kiện (4 điều kiện, mỗi điều kiện có vai trò phụ trách và ngày kiểm tra).
-- Kết quả duyệt chéo nhóm nhận được từ hội đồng (nhóm MID, L3A):
-  - Điểm: 25 / 30
-  - Quyết định của hội đồng: **Go có điều kiện**, đồng ý pilot trong phạm vi `noi_dia` + `hang_nang`, chia theo nhân viên 20 + 20.
-  - Câu hỏi của hội đồng: "Pilot chỉ đủ mẫu cho mức chênh 6 điểm, nếu tác động thật là 5 điểm thì power chỉ 0,64. Vì sao nhóm vẫn chọn cách chia này, và nếu đến `decision_date` kết quả không có ý nghĩa thống kê thì làm gì?"
-  - Câu trả lời của nhóm: chỉ có 40 nhân viên, chia 20 + 20 thì cỡ mẫu hiệu dụng tối đa 20 / 0,02 = 1.000 < 1.251 nên không thể đạt mức chênh 5 điểm với bất kỳ số yêu cầu nào. Chia theo yêu cầu đủ mẫu nhưng nhân viên dùng lẫn hai nhóm nên tràn tác động; chia theo depot chỉ có 6 cụm (< 20). Vì vậy nhóm chọn cách duy nhất tách được tác động và ghi rõ đánh đổi; điều kiện 2 yêu cầu Giám đốc vận hành ký chấp nhận mức chênh 6 điểm trước 2026-12-01. Nếu đến 2027-01-05 kết quả không có ý nghĩa thống kê, hồ sơ ghi "chưa kết luận được", không mở rộng, và đề xuất kéo dài pilot hoặc thêm nhân viên chứ không đọc thành "trợ lý có tác dụng".
+- Duyệt chéo, nhóm D2HL làm hội đồng chấm nhóm MID (L3A): 25 / 30, quyết định **Go có điều kiện** (xem `phieu_cham.md`).
+- Kết quả duyệt chéo nhóm D2HL nhận được từ hội đồng: ... (điền điểm / 30, quyết định, câu hỏi và câu trả lời khi nhận phiếu của nhóm chấm mình).
 - Nhận xét của giảng viên: ...
 
 ## 5. Khó khăn và cách xử lý
