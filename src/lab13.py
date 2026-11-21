@@ -247,3 +247,16 @@ if __name__ == '__main__':
           f"noi_dia + hang_nang: {reqs_pham_vi['mo_lai_trong_7_ngay'].mean():.2%}")
     print(f"Tỉ lệ làm lại trong phạm vi: {(reqs_pham_vi['ket_qua'] == 'lam_lai').mean():.1%}")
     print(f'Nếu đặt trần tuyệt đối 3% thì đã vượt ({reqs["mo_lai_trong_7_ngay"].mean():.2%}) → pilot dừng ngay tuần đầu')
+
+    # ---------- Nhiệm vụ E1 · Đặc tả chỉ số, tính thử trên 1.200 yêu cầu (CP5) ----------
+    # Không có nhóm đối chứng: chỉ viết "chỉ số trong đợt chạy thử là ...", không viết "trợ lý đã nâng chỉ số".
+    chinh = (reqs['dong_trong_24h'] == 1) & (reqs['mo_lai_trong_7_ngay'] == 0)
+    xem = reqs[reqs['duoc_xem_lai'] == 1]
+    bo_qua = xem['quyet_dinh_xem_lai'].isin(['sua', 'bo'])
+    an_toan = reqs['mo_lai_trong_7_ngay'] == 1
+    print('\n=== E1 · Ba chỉ số trong đợt chạy thử (1.200 yêu cầu) ===')
+    print(f"Chính   · đóng 24h, không mở lại 7 ngày: {chinh.mean():.2%} ({chinh.sum()}/{len(reqs)})")
+    print(f"Dùng    · bỏ qua gợi ý (sua + bo) / được xem lại: {bo_qua.mean():.2%} ({bo_qua.sum()}/{len(xem)})")
+    print(f"An toàn · mở lại trong 7 ngày: {an_toan.mean():.2%} ({an_toan.sum()}/{len(reqs)})")
+    print('Phân bố quyết định xem lại:', xem['quyet_dinh_xem_lai'].value_counts().to_dict())
+    print('Chỉ số chính theo loại:', reqs.assign(c=chinh).groupby('loai')['c'].mean().map(lambda x: f'{x:.1%}').to_dict())
