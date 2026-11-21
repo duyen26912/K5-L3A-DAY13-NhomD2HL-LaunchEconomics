@@ -47,10 +47,12 @@ Tỉ lệ lần chạy `ok` theo lần thử (đo từ trace): noi_dia 91,0% →
 
 | Khối lượng | Việc thành công mỗi tháng | Chi phí cố định mỗi việc | Chi phí mỗi việc thành công + cố định | So với 12.000 đ |
 | --- | ---: | ---: | ---: | ---: |
-| 45.000 yêu cầu/tháng | ... | ... | ... | ... |
-| Một nửa khối lượng | ... | ... | ... | ... |
+| 45.000 yêu cầu/tháng | 33.750 | 1.185 đ | 4.599 đ [simulated] | 0,38× |
+| Một nửa khối lượng (22.500 yêu cầu/tháng) | 16.875 | 2.370 đ | 5.784 đ [simulated] | 0,48× |
 
-- Chi phí cố định có đổi kết luận không? Ở khối lượng nào? ...
+Tự kiểm tay: phạm vi `noi_dia` + `hang_nang` có 900/1.200 việc thành công (CPS 3.072.513 / 900 = 3.414 đ [simulated]); 45.000 × 900 / 1.200 = 33.750 việc/tháng; 40.000.000 / 33.750 = 1.185 đ/việc.
+
+- Chi phí cố định có đổi kết luận không? Ở khối lượng nào? **Không đổi kết luận** ở quy mô đầy đủ (4.599 đ = 0,38×) lẫn khi giảm một nửa khối lượng (5.784 đ = 0,48×) [simulated]. Chi phí cố định chỉ đội lên và làm đổi kết luận khi khối lượng rất nhỏ (dưới ~6.212 yêu cầu/tháng, tức ~4.659 việc thành công/tháng, là ngưỡng hoà vốn 12.000 đ). Hồ sơ cần nêu rõ đã cộng chi phí cố định hay chưa và tính ở khối lượng nào.
 
 ## B1 · Đổi từng yếu tố
 

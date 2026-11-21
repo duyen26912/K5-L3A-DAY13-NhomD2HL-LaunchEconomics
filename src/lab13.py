@@ -123,6 +123,22 @@ if __name__ == '__main__':
           .map(lambda x: f'{x:.1%}'))
     print('Số lần chạy theo lần thử:')
     print(runs_loai.pivot_table(index='loai', columns='attempt', values='ok', aggfunc='count'))
+
+    # ---------- Nhiệm vụ A4 · Chi phí cố định (phạm vi noi_dia + hang_nang) ----------
+    CO_DINH_THANG = 40_000_000   # đồng / tháng
+    YC_THANG = 45_000            # yêu cầu / tháng ở quy mô đầy đủ
+    reqs_pham_vi = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])]
+    kq_pv = mo_hinh(runs, reqs_pham_vi)
+    print('\n=== A4 · Chi phí cố định, phạm vi noi_dia + hang_nang (simulated) ===')
+    print(f"Phạm vi: tong {kq_pv['tong']:,.0f} đ / {kq_pv['thanh_cong']} việc TC "
+          f"→ cps {kq_pv['cps']:,.0f} đ ({kq_pv['cps'] / BASELINE:.2f}×)")
+    for ten_kl, yc_thang in [('45.000 yc/tháng', YC_THANG), ('Một nửa (22.500)', YC_THANG / 2)]:
+        # Quy ra quy mô tháng theo tỉ lệ: việc TC trong phạm vi / 1.200 yêu cầu của mẫu
+        tc_thang = yc_thang * kq_pv['thanh_cong'] / len(reqs)
+        co_dinh_moi_viec = CO_DINH_THANG / tc_thang
+        tong_moi_viec = kq_pv['cps'] + co_dinh_moi_viec
+        print(f"{ten_kl:18s} TC/tháng {tc_thang:>8,.0f}  cố định/việc {co_dinh_moi_viec:>6,.0f} đ  "
+              f"cps + cố định {tong_moi_viec:>6,.0f} đ  = {tong_moi_viec / BASELINE:.2f}×")
     # TODO CP2 · Nhiệm vụ B: đổi từng yếu tố, ghi vào bảng độ nhạy.
     # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
     #   from statsmodels.stats.proportion import proportion_effectsize
